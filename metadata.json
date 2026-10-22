@@ -1,0 +1,6 @@
+{
+  "name": "Kisan Cold Storage Manager",
+  "description": "Simple Cold Storage management app for potato storage, farmer registration, inward ₹160/bag calculation, live chamber capacity, outward billing, gate passes, and monthly reports in Hindi and English.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

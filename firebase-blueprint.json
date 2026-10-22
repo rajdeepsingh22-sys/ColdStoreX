@@ -1,0 +1,124 @@
+{
+  "entities": {
+    "Farmer": {
+      "title": "Farmer",
+      "description": "Registered farmer ledger profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "fatherName": { "type": "string" },
+        "phone": { "type": "string" },
+        "village": { "type": "string" },
+        "aadharNo": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "code", "name", "phone", "village", "createdAt"]
+    },
+    "Chamber": {
+      "title": "Chamber",
+      "description": "Cold storage chamber room capacity and telemetry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nameHi": { "type": "string" },
+        "totalCapacity": { "type": "number" },
+        "floorCount": { "type": "number" },
+        "chhattasPerFloor": { "type": "number" },
+        "capacityPerChhatta": { "type": "number" },
+        "currentBags": { "type": "number" },
+        "temperature": { "type": "number" },
+        "humidity": { "type": "number" }
+      },
+      "required": ["id", "name", "nameHi", "totalCapacity", "floorCount", "currentBags", "temperature", "humidity"]
+    },
+    "InwardEntry": {
+      "title": "InwardEntry",
+      "description": "Potato lot intake record and gate pass voucher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "receiptNo": { "type": "string" },
+        "date": { "type": "string" },
+        "farmerId": { "type": "string" },
+        "farmerName": { "type": "string" },
+        "farmerPhone": { "type": "string" },
+        "farmerVillage": { "type": "string" },
+        "seedVariety": { "type": "string" },
+        "bagCount": { "type": "number" },
+        "weightPerBagKg": { "type": "number" },
+        "totalWeightKg": { "type": "number" },
+        "chamberId": { "type": "string" },
+        "chamberName": { "type": "string" },
+        "floorNo": { "type": "string" },
+        "chhattaNo": { "type": "number" },
+        "lotNo": { "type": "number" },
+        "chhattaCapacity": { "type": "number" },
+        "lotCapacity": { "type": "number" },
+        "rentPerBag": { "type": "number" },
+        "totalRentAmount": { "type": "number" },
+        "advancePaid": { "type": "number" },
+        "remainingRent": { "type": "number" },
+        "paymentStatus": { "type": "string" },
+        "remainingBags": { "type": "number" },
+        "vehicleNo": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "receiptNo", "date", "farmerId", "farmerName", "seedVariety", "bagCount", "chamberId", "rentPerBag", "totalRentAmount", "remainingBags", "createdAt"]
+    },
+    "OutwardEntry": {
+      "title": "OutwardEntry",
+      "description": "Potato release withdrawal and gate pass voucher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "gatePassNo": { "type": "string" },
+        "date": { "type": "string" },
+        "inwardEntryId": { "type": "string" },
+        "farmerId": { "type": "string" },
+        "farmerName": { "type": "string" },
+        "farmerPhone": { "type": "string" },
+        "farmerVillage": { "type": "string" },
+        "seedVariety": { "type": "string" },
+        "chamberId": { "type": "string" },
+        "chamberName": { "type": "string" },
+        "floorNo": { "type": "string" },
+        "chhattaNo": { "type": "number" },
+        "lotNo": { "type": "number" },
+        "bagsOut": { "type": "number" },
+        "rentPerBag": { "type": "number" },
+        "grossRentDue": { "type": "number" },
+        "advanceAdjusted": { "type": "number" },
+        "handlingFee": { "type": "number" },
+        "netAmountPaid": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentRef": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "vehicleNo": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "gatePassNo", "date", "inwardEntryId", "farmerId", "farmerName", "bagsOut", "rentPerBag", "netAmountPaid", "paymentMethod", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/farmers/{farmerId}": {
+      "schema": "Farmer",
+      "description": "Registered farmer directory"
+    },
+    "/chambers/{chamberId}": {
+      "schema": "Chamber",
+      "description": "Cold storage chamber room statuses and capacities"
+    },
+    "/inwards/{inwardId}": {
+      "schema": "InwardEntry",
+      "description": "Potato inward lots and vouchers"
+    },
+    "/outwards/{outwardId}": {
+      "schema": "OutwardEntry",
+      "description": "Potato outward vouchers and billing records"
+    }
+  }
+}
